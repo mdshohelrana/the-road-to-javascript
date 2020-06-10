@@ -8,6 +8,7 @@ const getFullTime = () => {
   hours = checkTime(hours);
   minutes = checkTime(minutes);
   seconds = checkTime(seconds);
+
   document.getElementById("clock").innerHTML =
     hours + ":" + minutes + ":" + seconds;
   setTimeout(getFullTime, 1000);
@@ -22,9 +23,25 @@ const getFullDate = () => {
   const day = now.getDate("August 19, 1975 23:15:30");
   const month = now.getMonth() + 1;
   const year = now.getFullYear();
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+
   document.getElementById(
     "fullDate"
   ).textContent = `Today is: ${day}/${month}/${year}`;
+  document.getElementById(
+    "de_Date"
+  ).textContent = `Heute ist: ${now.toLocaleDateString("de-DE", options)}`;
+  document.getElementById(
+    "ar_Date"
+  ).textContent = `اليوم: ${now.toLocaleDateString("ar-SY", options)}`;
+  document.getElementById(
+    "ar_Date"
+  ).textContent = `আজ: ${now.toLocaleDateString("bn-BD", options)}`;
 };
 
 getFullDate();
